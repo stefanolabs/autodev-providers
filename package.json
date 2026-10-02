@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "index": "node scripts/build-index.mjs",
+    "check-index": "node scripts/build-index.mjs --check",
+    "test": "vitest run"
+  },
+  "devDependencies": { "@stefanolabs/autodev-provider-kit": "0.1.0", "vitest": "^2.0.0", "@vitest/coverage-v8": "^2.0.0" }
+}

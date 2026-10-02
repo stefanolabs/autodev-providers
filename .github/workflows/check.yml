@@ -1,0 +1,29 @@
+name: check
+on: [pull_request, push]
+permissions:
+  contents: read
+jobs:
+  providers:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - name: Each provider is built from its reviewed source, gated, sandboxed and passes the contract
+        shell: bash
+        run: |
+          for dir in providers/*/; do
+            name=$(basename "$dir")
+            npx autodev-provider-kit build "$dir/src/index.ts" -o "/tmp/$name.mjs"
+            cmp "/tmp/$name.mjs" "$dir/provider.mjs" || { echo "$name: provider.mjs is not the build of src/"; exit 1; }
+            npx autodev-provider-kit check "$dir/provider.mjs" --captures "$dir/captures"
+            ls "$dir"test/*.test.ts >/dev/null 2>&1 || { echo "$name: no tests in test/ — they are required"; exit 1; }
+            npx vitest run "$dir"test --coverage.enabled --coverage.provider=v8 \
+              --coverage.include="${dir}src/**" --coverage.thresholds.lines=80 \
+              || { echo "$name: its tests fail, or cover under 80% of src/"; exit 1; }
+          done
+      - run: npm run check-index

@@ -1,0 +1,5 @@
+{
+  "description": "The template: the smallest real provider, driving OpenAI's codex. Copy it to start your own.",
+  "author": "Stefano Labs",
+  "homepage": "https://github.com/stefanolabs/autodev-providers/tree/main/providers/template-codex"
+}

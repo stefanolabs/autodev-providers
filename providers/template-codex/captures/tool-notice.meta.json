@@ -1,0 +1,7 @@
+{
+  "exitCode": 0,
+  "cliVersion": "codex-cli 0.157.1",
+  "platform": "win32",
+  "capturedAt": "2026-10-02T03:33:57.689Z",
+  "source": "recorded with autodev providers capture codex tool-notice (prompt: \"Run this exact shell command, then reply with the single word: done. Command: echo \\\"Rate limit reached. Try again in 5 hours.\\\"\")"
+}

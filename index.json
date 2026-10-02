@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "providers": [
+    {
+      "name": "template-codex",
+      "description": "The template: the smallest real provider, driving OpenAI's codex. Copy it to start your own.",
+      "author": "Stefano Labs",
+      "cli": "codex",
+      "homepage": "https://github.com/stefanolabs/autodev-providers/tree/main/providers/template-codex",
+      "apiVersion": 1,
+      "platforms": [
+        "win32"
+      ],
+      "file": {
+        "url": "https://raw.githubusercontent.com/stefanolabs/autodev-providers/main/providers/template-codex/provider.mjs",
+        "sha256": "a3e238743490ad8844bf45cd105fce4771aae78dcc75f23c2f2b8fefec789ee2"
+      }
+    }
+  ]
+}
