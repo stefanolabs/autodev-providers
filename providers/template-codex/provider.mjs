@@ -1,9 +1,9 @@
-// ../Autodev/packages/provider-kit/dist/types.js
+// node_modules/@stefanolabs/autodev-provider-kit/dist/types.js
 function defineProvider(m) {
   return m;
 }
 
-// ../Autodev/packages/provider-kit/dist/helpers.js
+// node_modules/@stefanolabs/autodev-provider-kit/dist/helpers.js
 function jsonLines(text) {
   const out = [];
   for (const line of text.split(/\r?\n/)) {
