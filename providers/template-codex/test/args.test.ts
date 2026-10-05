@@ -58,4 +58,10 @@ describe("template-codex", () => {
     await provider.create({}, part.host as never).execute("hi");
     expect(part.calls[0].join(" ")).toContain("mcp_servers.autodev.command");
   });
+
+  it("pre-approves AutoDev's tools, since codex exec refuses any tool that needs approval", async () => {
+    const part = host({ mcp: { name: "autodev", command: "node", args: ["cli.js", "mcp"], file: null } });
+    await provider.create({}, part.host as never).execute("hi");
+    expect(part.calls[0]).toEqual(expect.arrayContaining(["-c", 'mcp_servers.autodev.default_tools_approval_mode="approve"']));
+  });
 });

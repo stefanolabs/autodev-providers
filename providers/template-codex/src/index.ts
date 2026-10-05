@@ -44,6 +44,9 @@ export default defineProvider({
         args.push(
           "-c", "mcp_servers." + host.mcp.name + ".command=" + JSON.stringify(host.mcp.command),
           "-c", "mcp_servers." + host.mcp.name + ".args=" + JSON.stringify(host.mcp.args),
+          // `codex exec` runs with approval policy "never": a tool that is not pre-approved is refused,
+          // and the turn ends ok with no post. Pre-approve only AutoDev's tools, not the person's.
+          "-c", "mcp_servers." + host.mcp.name + '.default_tools_approval_mode="approve"',
         );
       }
 
